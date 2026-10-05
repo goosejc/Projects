@@ -192,8 +192,8 @@ svg text{font-family:var(--font);fill:var(--ink)}
     <div class="ideas">
       <div><h3>Pabellón abierto frente al canal</h3><p>Sala, comedor y bar al aire libre bajo un techo alto a cuatro aguas (7,20 m), frente a la piscina con jacuzzi pegado. Junto al bar, una parrilla cubierta con campana y pared cortaviento para asar compartiendo con todos.</p></div>
       <div><h3>Cine, bar, gym y turco con aire</h3><p>El estudio tiene cine, un bar pequeño y premium y un comedor moderno, separado del pabellón por un ventanal. El gimnasio y el turco tienen puerta directa al pabellón.</p></div>
-      <div><h3>Cabañas con jardín y azotea</h3><p>Cuatro cabañas iguales de 46 m², con cama king, una esquina de 2 sencillas que de día es sofá, vestier y baño con ducha doble. El dormitorio abre a su jardín privado y una escalera sube a la azotea con lounge y sombrilla.</p></div>
-      <div><h3>Camino cubierto</h3><p>Desde el parqueo, un camino con techo pasa entre las cabañas escalonadas hasta el pabellón. Junto al parqueo hay una bodega náutica para kayaks, paddle y pesca.</p></div>
+      <div><h3>Cabañas con jardín y azotea</h3><p>Cuatro cabañas iguales de 42 m², con cama king, una esquina de 2 sencillas que de día es sofá, vestier y baño con ducha doble. El dormitorio abre a su jardín privado y una escalera sube a la azotea con lounge y sombrilla.</p></div>
+      <div><h3>Camino con pérgola y luz</h3><p>Un camino de 2,60 m con pérgola de madera sobre vidrio, piso claro, muros verdes y jardineras lleva del parqueo al pabellón. Cada puerta queda en un nicho, y al fondo se ve el pabellón y el mar.</p></div>
     </div>
     <div class="seg plantabs" id="plantabs">
       <button data-p="planta" aria-pressed="true">Planta</button>
@@ -259,7 +259,7 @@ const PH=L.eave-L.f0;
 
 /* ---------- program (one floor) ---------- */
 const CW=7.0, CD=6.6, CH=2.7, CRT=L.f0+CH+0.25, SROW=[['Hab. 1',11.6],['Hab. 2',21.0]], NROW=[['Hab. 3',16.1],['Hab. 4',25.4]];
-const CABR=[...SROW.map(([n,a])=>[a,a+CW,5.4,12.0]),...NROW.map(([n,a])=>[a,a+CW,14.0,20.6])];
+const CABR=[...SROW.map(([n,a])=>[a,a+CW,5.4,11.7]),...NROW.map(([n,a])=>[a,a+CW,14.3,20.6])];
 const inCab=(x,y)=>CABR.some(r=>x>=r[0]-0.01&&x<=r[1]+0.01&&y>=r[2]-0.01&&y<=r[3]+0.01);
 const ROOMS=[
   {n:'Pabellón abierto',r:[34,42.2,10.4,19.2],t:'pav',g:'Pabellón',l:[38.1,11.6],open:true,tall:true},
@@ -276,15 +276,19 @@ const ROOMS=[
 ];
 for(const [n,a] of SROW){
   ROOMS.push({n,r:[a,a+CW,5.4,9.0],t:'bed',g:'Cabañas',l:[a+4.0,7.0]});
-  ROOMS.push({n:'Baño',r:[a,a+3.6,9.0,12.0],t:'wet',g:'Cabañas',l:[a+1.6,10.15],of:n});
-  ROOMS.push({n:'Vestier',r:[a+3.6,a+CW,9.0,12.0],t:'serv',g:'Cabañas',l:[a+5.5,9.55],small:true,of:n});
+  ROOMS.push({n:'Baño',r:[a,a+3.6,9.0,11.2],t:'wet',g:'Cabañas',l:[a+2.1,10.25],fs:0.5,of:n,grp:'b'+n});
+  ROOMS.push({n:'Baño',r:[a,a+0.8,11.2,11.7],t:'wet',g:'Cabañas',nolabel:true,grp:'b'+n},{n:'Baño',r:[a+2.4,a+3.6,11.2,11.7],t:'wet',g:'Cabañas',nolabel:true,grp:'b'+n});
+  ROOMS.push({n:'Vestier',r:[a+3.6,a+CW,9.0,11.0],t:'serv',g:'Cabañas',l:[a+5.2,9.5],small:true,of:n,grp:'v'+n});
+  ROOMS.push({n:'Vestier',r:[a+3.6,a+4.4,11.0,11.7],t:'serv',g:'Cabañas',nolabel:true,grp:'v'+n},{n:'Vestier',r:[a+5.8,a+CW,11.0,11.7],t:'serv',g:'Cabañas',nolabel:true,grp:'v'+n});
 }
 for(const [n,a] of NROW){
   ROOMS.push({n,r:[a,a+CW,17.0,20.6],t:'bed',g:'Cabañas',l:[a+4.0,18.6]});
-  ROOMS.push({n:'Baño',r:[a,a+3.6,14.0,17.0],t:'wet',g:'Cabañas',l:[a+1.6,15.95],of:n});
-  ROOMS.push({n:'Vestier',r:[a+3.6,a+CW,14.0,17.0],t:'serv',g:'Cabañas',l:[a+5.5,16.45],small:true,of:n});
+  ROOMS.push({n:'Baño',r:[a,a+3.6,14.8,17.0],t:'wet',g:'Cabañas',l:[a+2.1,15.75],fs:0.5,of:n,grp:'b'+n});
+  ROOMS.push({n:'Baño',r:[a,a+0.8,14.3,14.8],t:'wet',g:'Cabañas',nolabel:true,grp:'b'+n},{n:'Baño',r:[a+2.4,a+3.6,14.3,14.8],t:'wet',g:'Cabañas',nolabel:true,grp:'b'+n});
+  ROOMS.push({n:'Vestier',r:[a+3.6,a+CW,15.0,17.0],t:'serv',g:'Cabañas',l:[a+5.2,16.5],small:true,of:n,grp:'v'+n});
+  ROOMS.push({n:'Vestier',r:[a+3.6,a+4.4,14.3,15.0],t:'serv',g:'Cabañas',nolabel:true,grp:'v'+n},{n:'Vestier',r:[a+5.8,a+CW,14.3,15.0],t:'serv',g:'Cabañas',nolabel:true,grp:'v'+n});
 }
-const OPEN=[[33.5,25.2,34.7,25.2],...SROW.map(([n,a])=>[a+3.7,9.0,a+4.6,9.0]),...NROW.map(([n,a])=>[a+3.7,17.0,a+4.6,17.0])];
+const OPEN=[[33.5,25.2,34.7,25.2],...SROW.flatMap(([n,a])=>[[a+3.7,9.0,a+4.6,9.0],[a,11.2,a+0.8,11.2],[a+2.4,11.2,a+3.6,11.2],[a+3.6,11.0,a+4.4,11.0],[a+5.8,11.0,a+CW,11.0]]),...NROW.flatMap(([n,a])=>[[a+3.7,17.0,a+4.6,17.0],[a,14.8,a+0.8,14.8],[a+2.4,14.8,a+3.6,14.8],[a+3.6,15.0,a+4.4,15.0],[a+5.8,15.0,a+CW,15.0]])];
 const GLASSP=[];
 const EXT=[
   [29.6,5.4,31.6,5.4,'solid'],[31.6,5.4,35.6,5.4,'glass'],[35.6,5.4,38.4,5.4,'solid'],[38.4,5.4,42.2,5.4,'glass'],[42.2,5.4,42.2,10.4,'glass'],[29.6,5.4,29.6,10.4,'solid'],
@@ -299,14 +303,16 @@ const EXT=[
 // stairs sit on the east side of Hab. 1, 2 and 3 and on the west side of Hab. 4
 const STAIRSIDE={'Hab. 1':'e','Hab. 2':'e','Hab. 3':'e','Hab. 4':'w'};
 for(const [n,a] of SROW){ const e=STAIRSIDE[n]==='e', wW=(e&&n!=='Hab. 1')?'win':'solid';
-  EXT.push([a,5.4,a+CW,5.4,'glass',CH],[a,5.4,a,9.0,wW,CH],[a,9.0,a,12.0,'high',CH],[a+CW,5.4,a+CW,9.0,e?'solid':'win',CH],[a+CW,9.0,a+CW,12.0,'solid',CH],
-  [a,12.0,a+3.6,12.0,'high',CH],[a+3.6,12.0,a+4.6,12.0,'solid',CH],[a+4.6,12.0,a+5.5,12.0,'door',CH,-1],[a+5.5,12.0,a+CW,12.0,'solid',CH]); }
+  EXT.push([a,5.4,a+CW,5.4,'glass',CH],[a,5.4,a,9.0,wW,CH],[a,9.0,a,11.7,'high',CH],[a+CW,5.4,a+CW,9.0,e?'solid':'win',CH],[a+CW,9.0,a+CW,11.7,'solid',CH],
+  [a,11.7,a+0.8,11.7,'solid',CH],[a+0.8,11.2,a+0.8,11.7,'solid',CH],[a+2.4,11.2,a+2.4,11.7,'solid',CH],[a+0.8,11.2,a+2.4,11.2,'high',CH],[a+2.4,11.7,a+4.4,11.7,'solid',CH],
+  [a+4.4,11.0,a+4.4,11.7,'solid',CH],[a+5.8,11.0,a+5.8,11.7,'solid',CH],[a+4.4,11.0,a+4.65,11.0,'solid',CH],[a+4.65,11.0,a+5.55,11.0,'door',CH,-1],[a+5.55,11.0,a+5.8,11.0,'solid',CH],[a+5.8,11.7,a+CW,11.7,'solid',CH]); }
 for(const [n,a] of NROW){ const e=STAIRSIDE[n]==='e';
-  EXT.push([a,20.6,a+CW,20.6,'glass',CH],[a,17.0,a,20.6,e?'win':'solid',CH],[a,14.0,a,17.0,'high',CH],[a+CW,17.0,a+CW,20.6,e?'solid':'win',CH],[a+CW,14.0,a+CW,17.0,'solid',CH],
-  [a,14.0,a+3.6,14.0,'high',CH],[a+3.6,14.0,a+4.6,14.0,'solid',CH],[a+4.6,14.0,a+5.5,14.0,'door',CH,1],[a+5.5,14.0,a+CW,14.0,'solid',CH]); }
+  EXT.push([a,20.6,a+CW,20.6,'glass',CH],[a,17.0,a,20.6,e?'win':'solid',CH],[a,14.3,a,17.0,'high',CH],[a+CW,17.0,a+CW,20.6,e?'solid':'win',CH],[a+CW,14.3,a+CW,17.0,'solid',CH],
+  [a,14.3,a+0.8,14.3,'solid',CH],[a+0.8,14.3,a+0.8,14.8,'solid',CH],[a+2.4,14.3,a+2.4,14.8,'solid',CH],[a+0.8,14.8,a+2.4,14.8,'high',CH],[a+2.4,14.3,a+4.4,14.3,'solid',CH],
+  [a+4.4,14.3,a+4.4,15.0,'solid',CH],[a+5.8,14.3,a+5.8,15.0,'solid',CH],[a+4.4,15.0,a+4.65,15.0,'solid',CH],[a+4.65,15.0,a+5.55,15.0,'door',CH,1],[a+5.55,15.0,a+5.8,15.0,'solid',CH],[a+5.8,14.3,a+CW,14.3,'solid',CH]); }
 const DOORS=[[31.6,8.6,'v',0.7,-1],[30.6,7.6,'h',0.6,-1]];
 for(const [n,a] of SROW) DOORS.push([a+3.6,9.9,'v',0.7,-1]);
-for(const [n,a] of NROW) DOORS.push([a+3.6,15.3,'v',0.7,-1]);
+for(const [n,a] of NROW) DOORS.push([a+3.6,15.4,'v',0.7,-1]);
 // stairs up to each roof terrace: [x0,x1,yBottom,yTop]
 const STAIRS=[[18.65,19.55,5.0,10.66],[28.05,28.95,5.0,10.66],[23.15,24.05,21.4,15.74],[24.45,25.35,21.4,15.74]];
 const FURN=[
@@ -320,11 +326,11 @@ const FURN=[
 for(const y of [12.9,14.2,15.5,16.8]) FURN.push([34.7,35.1,y,y+0.42,0.45,'fabric'],[36.5,36.9,y,y+0.42,0.45,'fabric']);
 for(const [x,y] of [[39.1,6.6],[39.1,7.3],[39.1,8.0],[41.1,6.6],[41.1,7.3],[41.1,8.0]]) FURN.push([x,x+0.4,y,y+0.38,0.45,'fabric']);
 for(const [n,a] of SROW) FURN.push([a+0.7,a+2.7,7.0,9.0,0.55,'bed'],[a+0.2,a+0.6,8.45,8.9,0.5,'wood'],[a+2.8,a+3.2,8.45,8.9,0.5,'wood'],
-  [a+5.0,a+6.95,8.1,9.0,0.45,'bed'],[a+6.05,a+6.95,6.2,8.1,0.45,'bed'],[a+5.2,a+5.8,6.6,7.5,0.4,'wood'],[a+6.45,a+6.85,9.15,11.85,2.2,'wood'],
-  [a+0.15,a+2.05,10.95,11.85,0.05,'white'],[a+0.1,a+0.6,9.2,10.6,0.85,'wood'],[a+2.65,a+3.25,11.2,11.85,0.42,'white']);
+  [a+5.0,a+6.95,8.1,9.0,0.45,'bed'],[a+6.05,a+6.95,6.2,8.1,0.45,'bed'],[a+5.2,a+5.8,6.6,7.5,0.4,'wood'],[a+6.45,a+6.85,9.15,11.55,2.2,'wood'],
+  [a+0.12,a+1.4,9.1,11.1,0.05,'white'],[a+1.6,a+3.4,9.05,9.55,0.85,'wood'],[a+2.7,a+3.3,10.65,11.15,0.42,'white'],[a+0.85,a+2.35,11.25,11.65,0.45,'white']);
 for(const [n,a] of NROW) FURN.push([a+0.7,a+2.7,17.0,19.0,0.55,'bed'],[a+0.2,a+0.6,17.1,17.55,0.5,'wood'],[a+2.8,a+3.2,17.1,17.55,0.5,'wood'],
-  [a+5.0,a+6.95,17.0,17.9,0.45,'bed'],[a+6.05,a+6.95,17.9,19.8,0.45,'bed'],[a+5.2,a+5.8,18.5,19.4,0.4,'wood'],[a+6.45,a+6.85,14.15,16.85,2.2,'wood'],
-  [a+0.15,a+2.05,14.15,15.05,0.05,'white'],[a+0.1,a+0.6,15.4,16.8,0.85,'wood'],[a+2.65,a+3.25,16.3,16.95,0.42,'white']);
+  [a+5.0,a+6.95,17.0,17.9,0.45,'bed'],[a+6.05,a+6.95,17.9,19.8,0.45,'bed'],[a+5.2,a+5.8,18.5,19.4,0.4,'wood'],[a+6.45,a+6.85,14.45,16.85,2.2,'wood'],
+  [a+0.12,a+1.4,14.9,16.9,0.05,'white'],[a+1.6,a+3.4,16.45,16.95,0.85,'wood'],[a+2.7,a+3.3,14.85,15.35,0.42,'white'],[a+0.85,a+2.35,14.35,14.75,0.45,'white']);
 FURN.push([9.3,9.75,5.2,9.6,1.8,'wood'],[10.65,11.1,5.2,9.6,1.8,'wood']);
 
 const PROOF=[34,42.2,10.4,21.2], POOL=[43.6,47.4,7.6,18.4], JACUZZI=[44.3,46.7,5.2,7.6], DOCK=[47.7,60.5,12.15,13.75];
@@ -335,12 +341,14 @@ const PFURN=[[38.8,41.0,21.45,22.1,0.92,'white'],[39.5,40.4,21.5,22.05,0.97,'dar
 const PCOLS=[[34,10.4],[42.2,10.4],[42.2,21.2],[36.2,21.2],[34,19.2],[38.1,10.4],[42.2,14.0],[42.2,17.6],[39.2,21.2],[34,16.6]];
 const DECK=[[42.2,5.0],[47.7,5.0],[47.7,15.0],[47.3,18.8],[44.2,21.2],[42.2,21.2]];
 const GARAGE=[[3.8, 13.107], [8.58, 16.025], [11.289, 11.586], [6.509, 8.668]];
-const PASARELA=[[11.3,34.0,12.0,14.0]];
+const PASARELA=[[11.3,34.0,11.7,14.3]];
 const GARDENS=[[11.2,19.8,0.7,5.4],[19.8,29.4,0.7,5.4],[15.6,24.25,20.6,25.6],[24.25,32.6,20.6,26.6]];
 const HEDGES=[[[11.2,5.4],[11.2,0.7],[29.4,0.7],[29.4,5.4]],[[19.8,0.7],[19.8,5.4]],[[15.6,20.6],[15.6,25.6],[24.25,25.6],[24.25,26.6],[32.6,26.6],[32.6,20.6]],[[24.25,20.6],[24.25,25.6]]];
-const SCREENS=[[[19.8,5.4],[19.8,12.0]],[[24.25,14.0],[24.25,20.6]],[[18.6,12.0],[21.0,12.0]],[[28.0,12.0],[29.6,12.0]],[[23.1,14.0],[25.4,14.0]],[[32.4,14.0],[34.0,14.0]]];
+const SCREENS=[[[19.8,5.4],[19.8,11.25]],[[24.25,14.75],[24.25,20.6]],[[18.6,11.25],[21.0,11.25]],[[28.0,11.25],[29.6,11.25]],[[23.1,14.75],[25.4,14.75]],[[32.4,14.75],[34.0,14.75]]];
 const GTREES=[[15.4,3.0],[24.6,3.0],[19.9,23.1],[28.4,23.6]];
 const PLANTERS=[];
+// planter boxes along the walkway: in the gaps between cabins and in each cabin's wall niche
+const GPLANT=[[18.7,20.9,11.25,11.7],[28.1,29.5,11.25,11.7],[23.2,25.3,14.3,14.75],[32.5,33.9,14.3,14.75],...SROW.map(([n,a])=>[a+0.85,a+2.35,11.25,11.65]),...NROW.map(([n,a])=>[a+0.85,a+2.35,14.35,14.75])];
 const RIEGO=[[[9.2, 16.16], [8.72, 16.61], [8.32, 16.56], [3.5, 13.63], [-5.15, 8.94], [-9.04, 11.17], [9.2, 22.31]], [[2.2, -0.01], [1.88, 1.14], [-0.15, 3.9], [9.01, 9.49], [9.2, -0.05]]];
 const GTH=31.4*Math.PI/180, GD=[Math.cos(GTH),Math.sin(GTH)], GN=[Math.sin(GTH),-Math.cos(GTH)];
 const gLoc=(u,v)=>[GARAGE[0][0]+u*GD[0]+v*GN[0],GARAGE[0][1]+u*GD[1]+v*GN[1]];
@@ -353,7 +361,7 @@ const fmt=(n,d=2)=>{const s=Math.abs(n).toFixed(d);let [i,f]=s.split('.');i=i.re
 const rArea=r=>(r[1]-r[0])*(r[3]-r[2]);
 const polyArea=p=>Math.abs(p.reduce((s,a,i)=>{const b=p[(i+1)%p.length];return s+a[0]*b[1]-b[0]*a[1]},0))/2;
 const inRect=(x,y,r)=>x>r[0]&&x<r[1]&&y>r[2]&&y<r[3];
-function labelArea(rm){return rArea(rm.r)+ROOMS.filter(q=>q.nolabel&&q.n===rm.n&&q!==rm).reduce((s,q)=>s+rArea(q.r),0)}
+function labelArea(rm){return rArea(rm.r)+ROOMS.filter(q=>q.nolabel&&q!==rm&&(rm.grp?q.grp===rm.grp:(q.n===rm.n&&!q.grp))).reduce((s,q)=>s+rArea(q.r),0)}
 
 /* interior partitions: room edges with another room on the other side, minus open stretches */
 function partitions(){
@@ -481,7 +489,8 @@ function planSVG(){
   o.push(sText(15.4,1.4,'Jardín privado',0.42,'rarea')); o.push(sText(24.3,1.4,'Jardín privado',0.42,'rarea')); o.push(sText(19.9,24.6,'Jardín privado',0.42,'rarea')); o.push(sText(28.4,25.4,'Jardín privado',0.42,'rarea'));
   for(const sc of SCREENS) o.push(sPoly(sc,'fill:none;stroke:var(--teak);stroke-width:0.14;stroke-dasharray:0.12 0.1',false));
   for(const r of PASARELA) o.push(sRect(r,'fill:var(--surface);stroke:var(--muted);stroke-width:0.04'));
-  for(let x=12.0;x<=33.0;x+=1) o.push(sLine(x,12.0,x,14.0,'stroke:var(--line);stroke-width:0.04'));
+  for(let x=12.0;x<=33.0;x+=1) o.push(sLine(x,11.7,x,14.3,'stroke:var(--line);stroke-width:0.04'));
+  for(const g of GPLANT){ o.push(sRect(g,'fill:var(--garden);stroke:var(--hedge);stroke-width:0.04')); const cx=(g[0]+g[1])/2, cy=(g[2]+g[3])/2; for(const dx of [-0.45,0,0.45]) if(Math.abs(dx)<(g[1]-g[0])/2-0.15) o.push(`<circle cx="${(cx+dx).toFixed(2)}" cy="${(-cy).toFixed(2)}" r="0.17" style="fill:none;stroke:var(--hedge);stroke-width:0.04"/>`); }
   o.push(sText(22.3,13.0,'Camino cubierto',0.45,'rname'));
   o.push(sPoly([[32.4,12.6],[33.3,13.0],[32.4,13.4]],'fill:var(--ink)'));
   o.push(sRect(PATIO,dash)); o.push(sText(11.5,15.8,'Patio',0.32,'rarea','middle',-90));
@@ -675,7 +684,7 @@ function siteSVG(){
 const GROUPS=['Social','Cine y bienestar','Cabañas'];
 const GNAME={'Social':'Cocina, baño social, lavandería y bodega náutica','Cine y bienestar':'Estudio con cine y bar, gimnasio y turco','Cabañas':'Cuatro cabañas iguales (con vestier y baño)'};
 const sumG=g=>ROOMS.filter(r=>r.g===g).reduce((s,r)=>s+rArea(r.r),0);
-const CLOSED=ROOMS.filter(r=>!r.open).reduce((s,r)=>s+rArea(r.r),0), OPENA=ROOMS.filter(r=>r.open).reduce((s,r)=>s+rArea(r.r),0), KAREA=polyArea(PARRILLA), PAS=PASARELA.reduce((s,r)=>s+rArea(r),0), IDX_USED=CLOSED+OPENA+KAREA+PAS;
+const CLOSED=ROOMS.filter(r=>!r.open).reduce((s,r)=>s+rArea(r.r),0), OPENA=ROOMS.filter(r=>r.open).reduce((s,r)=>s+rArea(r.r),0), KAREA=polyArea(PARRILLA), PAS=PASARELA.reduce((s,r)=>s+rArea(r),0), NICH=CABR.reduce((s,r)=>s+rArea(r),0)-ROOMS.filter(q=>q.g==='Cabañas').reduce((s,q)=>s+rArea(q.r),0), IDX_USED=CLOSED+OPENA+KAREA+PAS+NICH;
 function areasUI(){
   let h='<thead><tr><th>Espacio</th><th class="n">m²</th></tr></thead><tbody>';
   for(const g of GROUPS) h+=`<tr><td>${GNAME[g]}</td><td class="n">${fmt(sumG(g),1)}</td></tr>`;
@@ -683,6 +692,7 @@ function areasUI(){
   h+=`<tr><td>Pabellón abierto (cubierto)</td><td class="n">${fmt(OPENA,1)}</td></tr>`;
   h+=`<tr><td>Parrilla cubierta junto al pabellón</td><td class="n">${fmt(KAREA,1)}</td></tr>`;
   h+=`<tr><td>Camino cubierto</td><td class="n">${fmt(PAS,1)}</td></tr>`;
+  h+=`<tr><td>Nichos de entrada y jardineras (bajo la cubierta)</td><td class="n">${fmt(NICH,1)}</td></tr>`;
   const AZ=CABR.reduce((s,r)=>s+rArea(r),0);
   h+=`<tr class="total"><td>Total para el índice</td><td class="n">${fmt(IDX_USED,1)}</td></tr>`;
   h+=`<tr class="sub"><td>Máximo permitido (35 % de 1.569,52 m²)</td><td class="n">${fmt(IDX_MAX,1)}</td></tr>`;
@@ -757,7 +767,7 @@ showPlan('planta'); areasUI(); rulesUI();
   const mats={};
   const M=(k,hex,r=0.85,m=0,extra={})=>mats[k]||(mats[k]=new THREE.MeshStandardMaterial(Object.assign({color:C(hex),roughness:r,metalness:m},extra)));
   const mWhite=M('white','#F2EFE8',0.9), mWall=M('wall','#EEEBE3',0.92), mStone=M('stone','#D8CDB6',0.95);
-  const mTeak=M('teak','#8C5B33',0.75), mDeck=M('deck','#9A6B43',0.8), mDark=M('dark','#2C3431',0.6,0.3);
+  const mTeakL=M('teakl','#A9774A',0.75), mTeak=M('teak','#8C5B33',0.75), mDeck=M('deck','#9A6B43',0.8), mDark=M('dark','#2C3431',0.6,0.3);
   const mGlass=M('glass','#9ECBD0',0.05,0.2,{transparent:true,opacity:0.32,side:THREE.DoubleSide,depthWrite:false});
   const mPool=M('pool','#3BB8C3',0.15,0,{emissive:C('#0E5A62'),emissiveIntensity:0.25});
   const mWater=M('water','#1E727A',0.18,0.1);
@@ -813,7 +823,7 @@ showPlan('planta'); areasUI(); rulesUI();
   flat(GEO.pool7,0.04,mPool,S); flat(GEO.dock7,0.25,mDeck,S,0.2);
   flat(DRIVE,0.035,mPave,S);
   flat(GARAGE,0.045,mPave,S);
-  for(const r of PASARELA) box(r[0],r[1],r[2],r[3],0,0.3,mDeck,S,false);
+  const mPathStone=M('pstone','#E6DAC5',0.9); for(const r of PASARELA) box(r[0],r[1],r[2],r[3],0,0.3,mPathStone,S,false);
   box(...PATIO,0.0,0.05,mPave,S,false);
   box(...PTAR,0.0,0.18,M('ptar','#B9B4A8',0.9),S);
   const bpts=GEO.lot6.map(p=>new THREE.Vector3(p[0],0.08,-p[1])); bpts.push(bpts[0].clone());
@@ -952,8 +962,9 @@ showPlan('planta'); areasUI(); rulesUI();
   for(let x=35.85;x<38.25;x+=0.6) box(x,x+0.5,5.47,5.9,L.f0+1.25,L.f0+1.29,mTeak,Hh);
   // teak shutters beside bedroom windows (south)
   // teak slat screens on the path-side facades (entries)
-  for(const [n,a] of SROW) for(let x=a+0.2;x<a+3.5;x+=0.22) box(x,x+0.06,12.04,12.1,L.f0+0.2,L.f0+CH,mTeak,Hh);
-  for(const [n,a] of NROW) for(let x=a+0.2;x<a+3.5;x+=0.22) box(x,x+0.06,13.9,13.96,L.f0+0.2,L.f0+CH,mTeak,Hh);
+  const mSage=M('sage','#A8BC9E',0.95);
+  for(const [n,a] of SROW){ box(a+2.45,a+4.35,11.72,11.76,L.f0,L.f0+CH,mSage,Hh); }
+  for(const [n,a] of NROW){ box(a+2.45,a+4.35,14.24,14.28,L.f0,L.f0+CH,mSage,Hh); }
   // covered grill: stone base, wind wall, island with hood and chimney
   flat(PARRILLA,0.45,mStone,Hh,0.45);
   for(let i=0;i<WINDWALL.length-1;i++){ const [ax,ay]=WINDWALL[i],[bx,by]=WINDWALL[i+1], len=Math.hypot(bx-ax,by-ay);
@@ -993,9 +1004,12 @@ showPlan('planta'); areasUI(); rulesUI();
     for(const u of [0.15,2.8,5.45]) for(const v of [0.15,5.05]) lb(u-0.12,u+0.12,v-0.12,v+0.12,0,2.8);
     lb(0,5.6,0.02,0.28,2.8,3.02); lb(0,5.6,4.92,5.18,2.8,3.02);
     for(let u=0.05;u<5.6;u+=0.42) lb(u,u+0.08,0,5.2,3.02,3.12); }
-  for(const x of [11.4,19.8,28.8,31.4,33.8]) box(x-0.09,x+0.09,12.02,12.2,0.3,2.85,mTeak,S);
-  for(const x of [11.4,14.0,24.25,33.2]) box(x-0.09,x+0.09,13.8,13.98,0.3,2.85,mTeak,S);
-  for(const r of PASARELA){ box(r[0],r[1],r[2],r[3],2.85,2.95,mTeak,Rf); box(r[0],r[1],r[2],r[3],2.95,3.02,mWhite,Rf); }
+  for(const x of [11.45,18.75,20.85,28.15,29.45,33.85]) box(x-0.11,x+0.11,11.72,11.94,0.3,2.82,mTeakL,S);
+  for(const x of [11.45,16.0,23.25,25.25,32.55,33.85]) box(x-0.11,x+0.11,14.06,14.28,0.3,2.82,mTeakL,S);
+  for(const g of GPLANT){ box(g[0],g[1],g[2],g[3],0.3,0.75,mWhite,S); for(let x=g[0]+0.25;x<g[1]-0.1;x+=0.42){ const b=new THREE.Mesh(new THREE.SphereGeometry(0.34,8,6),mBush[Math.floor(rnd()*3)]); b.scale.set(1,2.6,0.8); b.position.set(x,0.75+0.6,-(g[2]+g[3])/2); b.castShadow=true; S.add(b); } }
+  const mGlassRoof=M('glassroof','#DDEFF2',0.05,0.1,{transparent:true,opacity:0.12,side:THREE.DoubleSide,depthWrite:false});
+  for(const r of PASARELA){ box(r[0],r[1],r[2],r[3],3.0,3.02,mGlassRoof,Rf,false); box(r[0],r[1],r[2],r[2]+0.16,2.82,3.0,mTeakL,Rf); box(r[0],r[1],r[3]-0.16,r[3],2.82,3.0,mTeakL,Rf);
+    for(let x=r[0]+0.1;x<r[1]-0.05;x+=0.6) box(x,x+0.06,r[2],r[3],3.02,3.1,mTeakL,Rf); }
 
   /* --- lights & sky --- */
   const hemi=new THREE.HemisphereLight(0xdcefff,0x5b6b44,0.55); scene.add(hemi);
@@ -1040,7 +1054,7 @@ showPlan('planta'); areasUI(); rulesUI();
   const VIEWS={
     canal:{p:[80,9,-8],t:[34,2.6,-14]},
     aerea:{p:[8,60,28],t:[30,0,-15]},
-    llegada:{p:[10.4,1.75,-12.95],t:[32,1.9,-12.95]},
+    llegada:{p:[12.3,1.75,-13.0],t:[33,1.95,-13.0]},
     piscina:{p:[57,2.4,-12.95],t:[36,2.8,-14.5]}
   };
   let anim=null;
