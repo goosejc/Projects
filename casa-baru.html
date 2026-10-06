@@ -204,7 +204,7 @@ svg text{font-family:var(--font);fill:var(--ink)}
     <h2>La casa</h2>
     <div class="ideas">
       <div><h3>Pabellón abierto frente al canal</h3><p>Sala, comedor y bar al aire libre bajo un techo alto a cuatro aguas (7,20 m), frente a la piscina con jacuzzi pegado. Junto al bar, una parrilla cubierta con campana y pared cortaviento para asar compartiendo con todos.</p></div>
-      <div><h3>Cine, bar, gym y turco con aire</h3><p>El estudio tiene cine, un bar pequeño y premium y un comedor moderno, separado del pabellón por un ventanal. El gimnasio y el turco tienen puerta directa al pabellón.</p></div>
+      <div><h3>Cine, bar, gym y turco con aire</h3><p>El estudio tiene cine, un bar pequeño y premium y un comedor moderno, separado del pabellón por un ventanal. El gimnasio y el turco tienen puerta directa al pabellón. El turco tiene un vidrio de piso a techo hacia su propio jardín, cerrado con una cerca viva alta para que nadie vea hacia adentro, y una pared de vidrio con puerta hacia el baño.</p></div>
       <div><h3>Cabañas con jardín y azotea</h3><p>Cuatro cabañas iguales de 42 m², con cama king, una esquina de 2 sencillas que de día es sofá, vestier y baño con ducha doble. El dormitorio abre a su jardín privado y una escalera sube a la azotea con lounge y sombrilla.</p></div>
       <div><h3>Camino con pérgola y luz</h3><p>Un camino de 2,60 m con pérgola de madera sobre vidrio, piso claro, muros verdes y jardineras lleva del parqueo al pabellón. Cada puerta queda en un nicho, y al fondo se ve el pabellón y el mar.</p></div>
     </div>
@@ -245,7 +245,7 @@ svg text{font-family:var(--font);fill:var(--ink)}
       <li><b>Franja de mangle.</b> La norma pide sembrar mangle rojo en "los 5 metros de retiro sobre el canal". Aquí se leyó como una franja de 5 m junto al agua, sin piscina ni deck, que solo cruza el muelle de 1,60 m.</li>
       <li><b>Qué cuenta en el índice.</b> Se sumó la terraza cubierta a los 549 m² por prudencia. Las pérgolas del parqueo y del camino no se contaron.</li>
       <li><b>Estudio.</b> No tiene clóset ni baño propio, para que no cuente como quinta habitación. Conviene confirmarlo con el Comité.</li>
-      <li><b>Aire acondicionado y equipos.</b> La altura máxima incluye los equipos, así que nada va sobre la cubierta. Cada cabaña tiene su condensadora debajo de la parte alta de su escalera, abierta para que salga el calor, junto al vestier o al baño y lejos de la cama. Las del gimnasio y del estudio van pegadas al muro sur de su bloque, unos 40 cm dentro del retiro lateral, y eso hay que confirmarlo con el comité. La planta eléctrica va en el patio técnico de la llegada, sobre una placa elevada, en cabina insonorizada y con el escape hacia la vía. El tanque de agua (unos 5 m³) va enterrado junto a la zona de servicio, anclado para que no flote y lejos de la PTAR y del campo de riego. Ruido, tuberías y capacidades los validan los ingenieros mecánico e hidráulico.</li>
+      <li><b>Aire acondicionado y equipos.</b> La altura máxima incluye los equipos, así que nada va sobre la cubierta. Cada cabaña tiene su condensadora debajo de la parte alta de su escalera, abierta para que salga el calor, junto al vestier o al baño y lejos de la cama. Las del gimnasio y del estudio van pegadas al muro sur del estudio, lejos del jardín del turco, unos 40 cm dentro del retiro lateral, y eso hay que confirmarlo con el comité. La planta eléctrica va en el patio técnico de la llegada, sobre una placa elevada, en cabina insonorizada y con el escape hacia la vía. El tanque de agua (unos 5 m³) va enterrado junto a la zona de servicio, anclado para que no flote y lejos de la PTAR y del campo de riego. Ruido, tuberías y capacidades los validan los ingenieros mecánico e hidráulico.</li>
       <li><b>Azoteas.</b> Confirmar con el Comité que una azotea sin techo sobre cada cabaña no cuenta como segundo piso. La baranda llega a 4,45 m.</li>
       <li><b>Capacidad.</b> Con la king y las 2 sencillas caben 4 personas por cabaña; la norma dice 3 por habitación.</li>
       <li><b>Pabellón abierto.</b> Necesita aleros generosos y cortinas o persianas enrollables para los aguaceros con brisa.</li>
@@ -329,9 +329,9 @@ for(const [n,a] of NROW){
   ROOMS.push({n:'Vestier',r:[a+3.6,a+4.4,14.3,15.0],t:'serv',g:'Cabañas',nolabel:true,grp:'v'+n},{n:'Vestier',r:[a+5.8,a+CW,14.3,15.0],t:'serv',g:'Cabañas',nolabel:true,grp:'v'+n});
 }
 const OPEN=[[33.9,25.2,34.7,25.2],[33.9,27.9,34.6,27.9],[35.0,25.2,35.75,25.2],[36.5,25.2,37.2,25.2],...SROW.flatMap(([n,a])=>[[a+3.7,9.0,a+4.6,9.0],[a,11.2,a+0.8,11.2],[a+2.4,11.2,a+3.6,11.2],[a+3.6,11.0,a+4.4,11.0],[a+5.8,11.0,a+CW,11.0]]),...NROW.flatMap(([n,a])=>[[a+3.7,17.0,a+4.6,17.0],[a,14.8,a+0.8,14.8],[a+2.4,14.8,a+3.6,14.8],[a+3.6,15.0,a+4.4,15.0],[a+5.8,15.0,a+CW,15.0]])];
-const GLASSP=[];
+const GLASSP=[[29.6,7.6,31.6,7.6]];   // turco: glass partition with a glass door to the bath
 const EXT=[
-  [29.6,5.4,31.6,5.4,'solid'],[31.6,5.4,35.6,5.4,'glass'],[35.6,5.4,38.4,5.4,'solid'],[38.4,5.4,42.2,5.4,'glass'],[42.2,5.4,42.2,10.4,'glass'],[29.6,5.4,29.6,10.4,'solid'],
+  [29.6,5.4,31.6,5.4,'glass'],[31.6,5.4,35.6,5.4,'glass'],[35.6,5.4,38.4,5.4,'solid'],[38.4,5.4,42.2,5.4,'glass'],[42.2,5.4,42.2,10.4,'glass'],[29.6,5.4,29.6,10.4,'solid'],
   [29.6,10.4,31.6,10.4,'high'],[31.6,10.4,34.0,10.4,'win'],[34.0,10.4,34.4,10.4,'solid'],[34.4,10.4,35.2,10.4,'door',L.H,-1],[35.2,10.4,35.6,10.4,'solid'],
   [35.6,10.4,41.0,10.4,'glass'],[41.0,10.4,42.0,10.4,'door',L.H,-1],[42.0,10.4,42.2,10.4,'solid'],
   [34,19.2,34,21.2,'solid'],[34,19.2,36.2,19.2,'solid'],[36.2,19.2,36.2,19.5,'solid'],[36.2,19.5,36.2,20.2,'door',L.H,-1],[36.2,20.2,36.2,21.2,'solid'],
@@ -363,7 +363,7 @@ const FURN=[
   [35.7,36.25,25.55,26.1,0.9,'white'],[35.7,36.25,26.15,26.75,0.9,'white'],[35.7,36.25,26.8,27.35,0.9,'white'],
   [32.95,33.85,28.45,29.35,0.04,'white'],[34.15,34.6,28.85,29.35,0.42,'white'],[33.05,33.75,28.05,28.4,0.85,'white'],
   [36.45,37.25,25.85,26.25,2.0,'wood'],
-  [34.7,35.5,5.6,8.4,0.5,'dark'],[31.8,33.8,5.6,6.6,0.03,'dark'],[29.7,30.1,5.5,7.5,0.45,'white'],
+  [34.7,35.5,5.6,8.4,0.5,'dark'],[31.8,33.8,5.6,6.6,0.03,'dark'],[29.7,30.1,5.5,7.5,0.45,'white'],[30.1,30.55,7.1,7.5,0.45,'white'],[29.72,30.2,7.75,8.35,0.85,'white'],[29.72,30.15,8.55,9.05,0.42,'white'],[29.72,30.9,9.45,10.28,0.04,'white'],
   [35.8,38.3,5.45,5.95,1.0,'dark'],[36.0,38.2,6.7,7.25,1.05,'wood'],[36.25,36.65,7.45,7.85,0.75,'fabric'],[36.9,37.3,7.45,7.85,0.75,'fabric'],[37.55,37.95,7.45,7.85,0.75,'fabric'],
   [35.65,35.75,8.4,10.0,1.6,'dark'],[37.2,38.1,8.2,10.2,0.45,'fabric'],[36.2,36.9,8.7,9.7,0.35,'wood'],[39.6,41.0,6.4,8.4,0.75,'white']
 ];
@@ -386,8 +386,10 @@ const PCOLS=[[34,10.4],[42.2,10.4],[42.2,21.2],[36.2,21.2],[34,19.2],[38.1,10.4]
 const DECK=[[42.2,5.0],[47.7,5.0],[47.7,15.0],[47.3,18.8],[44.2,21.2],[42.2,21.2]];
 const GARAGE=[[3.8, 13.107], [8.58, 16.025], [11.289, 11.586], [6.509, 8.668]];
 const PASARELA=[[11.3,34.0,11.7,14.3]];
+const TURCOG=[29.45,32.15,2.25,5.35];   // turco's private garden
 const GARDENS=VMODE?[[11.2,19.8,0.7,5.4],[19.8,29.4,0.7,5.4],...NROW.map(([n,a])=>[a,a+CW,20.6,20.6+VGD])]:[[11.2,19.8,0.7,5.4],[19.8,29.4,0.7,5.4],[15.6,24.25,20.6,25.6],[24.25,32.6,20.6,26.6]];
 const HEDGES=VMODE?[[[11.2,5.4],[11.2,0.7],[29.4,0.7],[29.4,5.4]],[[19.8,0.7],[19.8,5.4]],...NROW.map(([n,a])=>[[a,20.6],[a,20.6+VGD],[a+CW,20.6+VGD],[a+CW,20.6]])]:[[[11.2,5.4],[11.2,0.7],[29.4,0.7],[29.4,5.4]],[[19.8,0.7],[19.8,5.4]],[[15.6,20.6],[15.6,25.6],[24.25,25.6],[24.25,26.6],[32.6,26.6],[32.6,20.6]],[[24.25,20.6],[24.25,25.6]]];
+HEDGES.push([[29.4,2.2],[32.2,2.2],[32.2,5.4]]);
 const SCREENS=VMODE?[[[19.8,5.4],[19.8,11.25]],[[18.6,11.25],[21.0,11.25]],[[28.0,11.25],[29.6,11.25]]]:[[[19.8,5.4],[19.8,11.25]],[[24.25,14.75],[24.25,20.6]],[[18.6,11.25],[21.0,11.25]],[[28.0,11.25],[29.6,11.25]],[[23.1,14.75],[25.4,14.75]],[[32.4,14.75],[34.0,14.75]]];
 const GTREES=[[15.4,3.0],[24.6,3.0],[19.9,23.1],[28.4,23.6],[14.45,16.4]];
 const PLANTERS=[];
@@ -404,7 +406,7 @@ SCREENS.push([[10.2,14.7],[10.2,16.6]],[[10.2,16.6],[12.8,16.6]],[[12.8,16.6],[1
 const TECHBUSH=[...[10.3,10.9,11.5,12.1,12.7].map(x=>[x,17.0]),...[15.0,15.6,16.2].map(y=>[13.15,y]),...[15.2,15.8,16.4].map(y=>[9.95,y]),[12.2,14.45],[13.1,14.5]];
 // split AC: one condenser per cabin under the high end of its roof stair (next to the dressing room or bath, away from the bed), blowing to the open side;
 // gym and study units against the south wall of their block. [x0,x1,y0,y1,discharge]
-const ACU=[[19.05,19.35,9.3,10.1,'e'],[28.45,28.75,9.3,10.1,'e'],[23.2,24.0,15.8,16.1,'s'],[24.5,25.3,15.8,16.1,'s'],[32.8,33.6,4.65,4.95,'s'],[37.3,38.25,4.65,4.95,'s']];
+const ACU=[[19.05,19.35,9.3,10.1,'e'],[28.45,28.75,9.3,10.1,'e'],[23.2,24.0,15.8,16.1,'s'],[24.5,25.3,15.8,16.1,'s'],[35.75,36.55,4.65,4.95,'s'],[37.3,38.25,4.65,4.95,'s']];
 // buried drinking-water tank next to the service area, far from the PTAR and its drain field, with its pump box
 const TANK=[30.6,32.4,26.9,28.7], PUMP=[32.05,32.6,28.85,29.4];
 const DRIVE=[[-6.792, 7.365], [-2.379, 3.238], [6.509, 8.668], [3.8, 13.107]];
@@ -540,7 +542,7 @@ function planSVG(){
   { const c=gLoc(2.8,2.6); o.push(sText(c[0],c[1],'Parqueo × 2 con pérgola',0.4,'rarea','middle',-31.4)); }
   if(VMODE){ CTX=-1; o.push(sPoly(VPATIO,'fill:var(--garden)')); for(const [x,y] of VTREES) o.push(sCirc(x,y,1.5,'fill:none;stroke:var(--hedge);stroke-width:0.06'));
     o.push(sText(29.4,15.55,'Patio central',0.45,'rname','middle',0,'style="fill:var(--hedge)"')); o.push(sText(29.4,14.95,fmt(polyArea(VPATIO),1)+' m² abierto',0.32,'rarea')); CTX=null; }
-  o.push(sRect(TECHG,'fill:var(--garden)'));
+  o.push(sRect(TECHG,'fill:var(--garden)')); o.push(sRect(TURCOG,'fill:var(--garden)')); o.push(sText(30.8,3.0,'Jardín del turco',0.24,'rarea'));
   for(const g of GARDENS) o.push(sRect(g,'fill:var(--garden)'));
   for(const h of HEDGES) o.push(sPoly(h,'fill:none;stroke:var(--hedge);stroke-width:0.32;stroke-linecap:round;stroke-dasharray:0.05 0.38',false));
   for(const [x,y] of GTREES) o.push(sCirc(x,y,1.15,'fill:none;stroke:var(--hedge);stroke-width:0.06'));
@@ -611,7 +613,7 @@ function planSVG(){
   o.push(sText(35.8,18.3,'Comedor',0.42,'rarea')); o.push(sText(40.5,17.4,'Sala',0.42,'rarea')); o.push(sText(39.0,20.6,'Bar',0.36,'rarea'));
   o.push(sText(36.55,8.35,'Cine',0.32,'rarea')); o.push(sText(37.1,6.3,'Bar',0.32,'rarea')); o.push(sText(40.3,5.75,'Comedor',0.32,'rarea'));
   // dims, north, canal
-  dimH(29.6,42.2,4.25,'12,60',o);
+  dimH(29.6,42.2,1.55,'12,60',o);
   northArrow(8.7,24.3,0.8,o);
   o.push(sText(49.4,25.3,'Canal',0.6,'rname','middle',0,'style="fill:var(--water)"'));
   o.push(sPoly([[50.5,24.95],[51.1,25.3],[50.5,25.65]],'fill:var(--water)'));
@@ -707,7 +709,7 @@ function siteSVG(){
   o.push(sPoly(GEO.env,'fill:none;stroke:var(--sun);stroke-width:0.22;stroke-dasharray:0.9 0.5'));
   o.push(sPoly(DRIVE,'fill:var(--line)'));
   o.push(sPoly(GARAGE,'fill:none;stroke:var(--ink);stroke-width:0.14;stroke-dasharray:0.5 0.3'));
-  o.push(sRect(TECHG,'fill:var(--garden)')); o.push(sRect(TECH,'fill:var(--paper);stroke:var(--teak);stroke-width:0.14'));
+  o.push(sRect(TECHG,'fill:var(--garden)')); o.push(sRect(TURCOG,'fill:var(--garden)')); o.push(sRect(TECH,'fill:var(--paper);stroke:var(--teak);stroke-width:0.14'));
   o.push(sRect(TANK,'fill:none;stroke:var(--water);stroke-width:0.12;stroke-dasharray:0.4 0.25'));
   for(const g of GARDENS) o.push(sRect(g,'fill:var(--garden)'));
   for(const h of HEDGES) o.push(sPoly(h,'fill:none;stroke:var(--hedge);stroke-width:0.45;stroke-linecap:round',false));
@@ -995,6 +997,10 @@ showPlan('planta'); areasUI(); rulesUI();
   box(TECHGEN[0],TECHGEN[1],TECHGEN[2],TECHGEN[3],0.3,1.4,M('gen','#3E4A47',0.6),S);
   box(TECHPANEL[0],TECHPANEL[1],TECHPANEL[2],TECHPANEL[3],0.5,1.7,mWhite,S);
   for(const [x,y] of TECHBUSH) bush(x,y,0.45+rnd()*0.15,Math.floor(rnd()*3),mBush,1.6);
+  // turco garden: lawn and tropical planting toward the back hedge, open in front of the glass
+  box(TURCOG[0],TURCOG[1],TURCOG[2],TURCOG[3],0.015,0.04,M('glawn','#7FA650',1),S,false);
+  for(const [x,y,r] of [[29.85,2.75,0.55],[30.55,2.6,0.42],[31.35,2.7,0.5],[31.85,3.3,0.45],[29.8,3.5,0.4]]) bush(x,y,r,Math.floor(rnd()*3),mBush,1.4);
+  palm(31.0,2.9,3.4,0.06,210);
   // AC condensers on small concrete pads
   for(const [x0,x1,y0,y1] of ACU){ box(x0-0.05,x1+0.05,y0-0.05,y1+0.05,0,0.1,mPave,S); box(x0,x1,y0,y1,0.1,0.8,mWhite,S); }
   // buried tank: concrete lid with a manhole, and the pump box
